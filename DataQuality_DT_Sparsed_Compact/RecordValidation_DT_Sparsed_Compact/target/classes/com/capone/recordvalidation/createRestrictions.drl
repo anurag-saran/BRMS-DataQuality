@@ -1,0 +1,25 @@
+package com.redhat.recordvalidation;
+
+import com.capone.recordvalidation.FieldRestrictions;
+import com.capone.recordvalidation.Record;
+
+rule "Record Id Restriction"
+    when
+ 		$record : Record($record_id : record_id != null)
+	then
+		insert(new FieldRestrictions($record, "record_id", "" + $record_id ));
+end
+
+rule "Offer Id Restriction"
+    when
+ 		$record : Record($offer_id : offer_id != null)
+	then
+		insert(new FieldRestrictions($record, "offer_id", "" + $offer_id ));
+end
+
+rule "Offer Type CD Restriction"
+    when
+ 		$record : Record($offer_type_cd : offer_type_cd != null)
+	then
+		insert(new FieldRestrictions($record, "offer_type_cd", "" + $offer_type_cd ));
+end

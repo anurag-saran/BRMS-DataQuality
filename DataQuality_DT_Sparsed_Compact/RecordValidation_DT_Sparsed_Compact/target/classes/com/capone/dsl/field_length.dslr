@@ -1,0 +1,18 @@
+package com.redhat.dsl
+
+import com.capone.recordvalidation.Record;
+
+rule "offer id length"
+    when
+        There is a Row with field offer_id that is longer than 2
+    then
+        Flag row as invalid because offer_id is too long
+end
+
+rule "offer type cd length"
+    when
+        There is a Row with field offer_type_cd that is longer than 5
+    then
+        Flag row as invalid because offer_type_cd is too long
+end
+

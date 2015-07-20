@@ -1,0 +1,2 @@
+record_id,offer_id,offer_type_cd,rate,contract_date,pymt,payment_method_type_cd,current_offer_flag,offer_desc,address
+"R",4000,"9AB",99.0,"12/12/2014",3.0,"CASH",false,"desc","addr",[Payment_method_type_cd Value Not In List, offer_type_code Pattern doesnt match, record_id Pattern doesnt match, Record_id Length too short]

@@ -1,0 +1,69 @@
+package com.redhat.recordvalidation;
+import com.capone.recordvalidation.FieldRestrictions;
+
+rule "validateLengh"
+    when
+		$fr :  FieldRestrictions(  
+			$val: value != null, 
+			$len : length != null,
+			value.length > length
+			)
+			
+	then
+		$fr.setResult( $val +":  length should be less than or equal to :"+$len );
+end
+
+rule "validatePattern"
+    when
+		$fr : FieldRestrictions(  
+			$val : value != null,
+			$patt : pattern != null,
+			value not matches pattern
+			)
+	then
+		$fr.setResult($val + " should match pattern " + $patt);
+end
+
+/*
+rule "validateList"
+    ruleflow-group "validateField"
+    no-loop true
+    when
+		$fr : FieldRestrictions(  
+			// value != "",
+			$val : value,
+			list != null,
+		    list  != "" ,
+			$lst : list, 
+		    // result != ""
+			 (list.contains($val))
+           )
+	then
+		$fr.setResult($val +": Is not a valid value from the list :" + $lst);
+		//update( $fr );
+	end
+
+
+
+rule "validateRange"
+    ruleflow-group "validateField"
+    no-loop true
+    when
+		$fr : FieldRestrictions(  
+			//value != "",
+			$val : value,
+			//result != "",
+			minrange != null,
+			$minRan : minrange,
+			maxrange != null,
+			$maxRan : maxrange
+			//$val <= $minRan
+			//Integer.parseInt($val) >= $minRange,
+			//Integer.parseInt($val) <= $maxRange
+		)
+		
+	then
+		$fr.setResult($val +  'Range should be greater than  ' + $minRan + ' or less than ' + $maxRan);
+		//update( $fr );
+end
+*/

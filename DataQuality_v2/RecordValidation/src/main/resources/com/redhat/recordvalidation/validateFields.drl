@@ -1,0 +1,79 @@
+package com.redhat.recordvalidation;
+import com.redhat.recordvalidation.FieldRestrictions;
+
+rule "validateLengh"
+    //ruleflow-group "validateField"
+    no-loop true
+    when
+ 		
+		//System.out.println("################################################################################")
+		$fr :  FieldRestrictions(  
+		    //fieldname!="",
+			//value != "",
+			$val: value, 
+			length != null,
+			$len : length,
+			value.length > length
+			//result != ""
+			)
+	then
+		$fr.setResult( $val +":  lenght should be less than or equal to :"+$len );
+		//update( $fr );
+end
+
+rule "validateList"
+    //ruleflow-group "validateField"
+    no-loop true
+    when
+		$fr : FieldRestrictions(  
+			// value != "",
+			$val : value,
+		    list  != "" ,
+			$lst : list, 
+		    // result != ""
+			 (list.contains($val))
+           )
+	then
+		$fr.setResult($val +": Is not a valid value from the list :" + $lst);
+		//update( $fr );
+	end
+
+rule "validatePattern"
+    //ruleflow-group "validateField"
+    no-loop true
+    when
+		$fr : FieldRestrictions(  
+			//value != "",
+			$val : value,
+			//result != "",
+		    pattern != "",
+			$patt : pattern,
+			$val.matches($patt)
+			)
+	
+	then
+		$fr.setResult($val + " should match pattern " + $patt);
+		//update( $fr );
+end
+
+rule "validateRange"
+   // ruleflow-group "validateField"
+    no-loop true
+    when
+		$fr : FieldRestrictions(  
+			//value != "",
+			$val : value,
+			//result != "",
+			minrange != null,
+			$minRan : minrange,
+			maxrange != null,
+			$maxRan : maxrange
+			//$val <= $minRan
+			//Integer.parseInt($val) >= $minRange,
+			//Integer.parseInt($val) <= $maxRange
+		)
+		
+	then
+		$fr.setResult($val +  'Range should be greater than  ' + $minRan + ' or less than ' + $maxRan);
+		//update( $fr );
+end

@@ -1,0 +1,10 @@
+package com.redhat.dsl
+
+import com.capone.recordvalidation.Record;
+
+rule "offer type cd pattern"
+    when
+        There is a Row with field offer_type_cd that does not match "[A-Z][A-Z][A-Z]"
+    then
+        Flag row as invalid because offer_type_cd does not match [A-Z][A-Z][A-Z]
+end

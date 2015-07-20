@@ -1,0 +1,8 @@
+record_id,offer_id,offer_type_cd,rate,contract_date,pymt,payment_method_type_cd,current_offer_flag,offer_desc,address
+RecordID_00001,40,AAB,99.0,12/12/2014,3.0,CASH,false,desc,addr
+RecordID_00002,200,AAC,12.0,11/11/2014,3.0,DEBIT,false,desc,addr
+RecordID_00003,40,9AB,13.0,12/12/2014,3.0,CASH,false,desc,addr
+RecordID_00004,400,6AB,99.0,12/12/2014,3.0,CASH,false,desc,addr
+XecordID_00005,40,AAB,99.0,12/12/2014,3.0,iPay,false,desc,addr
+RecordID_0000000000000000000006,40,AAB,99.0,12/12/2014,3.0,CASH,false,desc,addr
+Rec7,40,ABB,999.0,12/12/2014,3.0,PayPal,false,desc,addr
